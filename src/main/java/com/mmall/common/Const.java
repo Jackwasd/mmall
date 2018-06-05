@@ -13,6 +13,14 @@ public class Const {
         //这里为什么选用的是Set的集合，因为set的contain方法的时间复杂度是O(1),而List的是O(N)
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc"); //按价格降序，升序
     }
+
+    public interface Cart{
+        int CHECKED = 1;    //即购物车选中状态
+        int UN_CHECKED = 0; //即购物车未选中状态
+        String LIMIT_NUM_FAIL = "LIMIT_NUM_FAIL";       //限制不超过库存失败
+        String LIMIT_NUM_SUCCESS = "LIMIT_NUM_SUCCESS"; //限制不超过库存成功
+    }
+
     public interface Role{
         int ROLE_CUSTOMER = 0; //普通用户
         int ROLE_ADMIN = 1;    //管理员
