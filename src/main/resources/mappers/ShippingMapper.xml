@@ -183,8 +183,7 @@
   </delete>
   <update id="updateByShipping" parameterType="com.mmall.pojo.Shipping">
     update mmall_shipping
-    set
-      receiver_name = #{receiverName,jdbcType=VARCHAR},
+    set receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
       receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
       receiver_province = #{receiverProvince,jdbcType=VARCHAR},

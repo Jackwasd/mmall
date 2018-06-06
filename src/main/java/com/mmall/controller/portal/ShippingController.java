@@ -94,6 +94,8 @@ public class ShippingController {
      * @param session
      * @return
      */
+    @RequestMapping("list.do")
+    @ResponseBody
     public ServerResponse<PageInfo> list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
                                          @RequestParam(value = "pageSize",defaultValue = "10") int pageSize,
                                          HttpSession session){
