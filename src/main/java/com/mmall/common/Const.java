@@ -8,6 +8,10 @@ public class Const {
     public static final String CURRENT_USER = "currentUser";
     public static final String EMAIL = "email";
     public static final String USERNAME = "username";
+    public static final String TOKEN_PREFIX = "token_";
+    public interface RedisCacheExtime{
+        int REDIS_SESSION_EXTIME = 60 * 30; //设置session在缓存中的有效时间是30分钟
+    }
 
     public interface ProductListOrderBy{
         //这里为什么选用的是Set的集合，因为set的contain方法的时间复杂度是O(1),而List的是O(N)
@@ -79,7 +83,6 @@ public class Const {
             throw new RuntimeException("没有找到对应的枚举");
         }
     }
-
 
     public enum PaymentTypeEnum{
         ONLINE_PAY(1, "在线支付");

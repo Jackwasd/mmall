@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
 
 public class TokenCache {
-    public static final String TOKEN_PREFIX = "token_";
+
     private static Logger logger = LoggerFactory.getLogger(TokenCache.class);
     //缓存的初始化容量是1000,最大容量是10000，当超过时，gugua会使用LRU算法来移除缓存项
     private static LoadingCache<String, String> localCache = CacheBuilder.newBuilder().initialCapacity(1000).maximumSize(10000).expireAfterAccess(12, TimeUnit.HOURS)
