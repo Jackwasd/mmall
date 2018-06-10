@@ -13,7 +13,10 @@ public interface IOrderService {
 
     //backend
     ServerResponse<PageInfo> manageList(int pageNum, int pageSize);
-    ServerResponse<OrderVo> orderDetail(Integer userId, Long orderNo);
+    ServerResponse<OrderVo> orderDetail(Long orderNo);
     ServerResponse<PageInfo> manageSearch(Long orderNo, int pageNum, int pageSize);
     ServerResponse<String> manageSendGoods(Long orderNo);
+
+    //hour个小时以内未付款的订单，进行关闭
+    void closeOrder(int hour);
 }

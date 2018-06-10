@@ -11,6 +11,9 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * 每次将session的有效期置为30秒
+ */
 public class SessionExpireFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
