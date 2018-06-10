@@ -3,6 +3,7 @@ package com.mmall.util;
 import com.mmall.common.RedisShardedPool;
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
 
 @Slf4j
 public class RedisShardedPoolUtil {
@@ -83,6 +84,23 @@ public class RedisShardedPoolUtil {
             result = jedis.del(key);
         } catch (Exception e) {
             log.error("del key{} error", key, e);
+            RedisShardedPool.returnBrokenResource(jedis);
+            return result;
+        }
+        RedisShardedPool.returnResource(jedis);
+        return result;
+    }
+
+    //设置这个锁，如果锁不存在的话才会成功
+    public static Long setnx(String key, String value){
+        ShardedJedis jedis = null;
+        Long result = null;
+
+        try {
+            jedis = RedisShardedPool.getJedis();
+            result = jedis.setnx(key, value);
+        } catch (Exception e) {
+            log.error("setnx key{} value{} error", key, value, e);
             RedisShardedPool.returnBrokenResource(jedis);
             return result;
         }
